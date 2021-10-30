@@ -67,6 +67,7 @@ export function Developer(props) {
           <Col>
             <Form.Control
               type="text"
+              className="bg-black text-white border-secondary"
               placeholder="Введите число"
               value={inputValue}
               onInput={(event) => {

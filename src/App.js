@@ -69,8 +69,13 @@ export function App() {
 
   return (
     <Container>
-      {![-1, 2].includes(branchId) && (
-        <Row className="text-muted justify-content-end">{totalScore + "%"}</Row>
+      {![-1, 2, 4].includes(branchId) && (
+        <Row
+          className="text-muted justify-content-end mb-4 fs-5"
+          style={{ paddingRight: "12px" }}
+        >
+          {totalScore + "%"}
+        </Row>
       )}
       {render()}
     </Container>
