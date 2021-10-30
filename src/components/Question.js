@@ -35,7 +35,7 @@ export function Question({
       </Col>
       <Col className="d-flex justify-content-end">
         <Button
-          className="p-0 text-decoration-none"
+          className="p-0 text-decoration-none fs-5"
           variant="link"
           disabled={!dirty}
           onClick={() => {

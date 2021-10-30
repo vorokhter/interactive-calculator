@@ -8,6 +8,7 @@ export function Developer(props) {
   const [questionId, setQuestionId] = React.useState(0);
   const [answerValue, setAnswerValue] = React.useState(0);
   const [inputValue, setInputValue] = React.useState("");
+  const [skip, setSkip] = React.useState(0);
 
   function secondQuestionChange(value) {
     if (
@@ -21,16 +22,16 @@ export function Developer(props) {
   }
 
   const defaultScoreUpdate = () => {
-    answerValue
-      ? props.updateTotalScore(props.totalScore + answerValue)
-      : setQuestionId(questionId + 1);
+    if (answerValue)
+      return props.updateTotalScore(props.totalScore + answerValue);
+    return setSkip(skip + 1);
   };
 
   React.useEffect(() => {
     if ((questionId === 3 && props.totalScore <= 40) || questionId === 4)
       return props.setBranchId(4);
     return setQuestionId(questionId + 1);
-  }, [props.totalScore]);
+  }, [props.totalScore, skip]);
 
   switch (questionId) {
     case 0:

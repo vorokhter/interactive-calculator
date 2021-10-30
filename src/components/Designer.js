@@ -5,18 +5,19 @@ import { Question } from "./";
 export function Designer(props) {
   const [questionId, setQuestionId] = React.useState(0);
   const [answerValue, setAnswerValue] = React.useState(0);
+  const [skip, setSkip] = React.useState(0);
 
   const defaultScoreUpdate = () => {
-    answerValue
-      ? props.updateTotalScore(props.totalScore + answerValue)
-      : setQuestionId(questionId + 1);
+    if (answerValue)
+      return props.updateTotalScore(props.totalScore + answerValue);
+    return setSkip(skip + 1);
   };
 
   React.useEffect(() => {
-    if ((questionId === 3 && props.totalScore <= 40) || questionId === 4)
+    if ((questionId === 3 && props.totalScore <= 50) || questionId === 4)
       return props.setBranchId(4);
     return setQuestionId(questionId + 1);
-  }, [props.totalScore]);
+  }, [props.totalScore, skip]);
 
   switch (questionId) {
     case 0:
