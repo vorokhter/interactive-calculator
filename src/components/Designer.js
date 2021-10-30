@@ -1,11 +1,22 @@
 import React from "react";
-import { Col } from "react-bootstrap";
 import { designer } from "../const/questions";
 import { Question } from "./";
 
 export function Designer(props) {
   const [questionId, setQuestionId] = React.useState(0);
   const [answerValue, setAnswerValue] = React.useState(0);
+
+  const defaultScoreUpdate = () => {
+    answerValue
+      ? props.updateTotalScore(props.totalScore + answerValue)
+      : setQuestionId(questionId + 1);
+  };
+
+  React.useEffect(() => {
+    if ((questionId === 3 && props.totalScore <= 40) || questionId === 4)
+      return props.setBranchId(4);
+    return setQuestionId(questionId + 1);
+  }, [props.totalScore]);
 
   switch (questionId) {
     case 0:
@@ -14,10 +25,7 @@ export function Designer(props) {
           branch={designer}
           questionId={questionId}
           setAnswerValue={setAnswerValue}
-          questionClick={() => {
-            props.updateTotalScore(props.totalScore + answerValue);
-            setQuestionId(questionId + 1);
-          }}
+          questionClick={defaultScoreUpdate}
         />
       );
 
@@ -27,10 +35,7 @@ export function Designer(props) {
           branch={designer}
           questionId={questionId}
           setAnswerValue={setAnswerValue}
-          questionClick={() => {
-            props.updateTotalScore(props.totalScore + answerValue);
-            setQuestionId(questionId + 1);
-          }}
+          questionClick={defaultScoreUpdate}
         />
       );
 
@@ -40,10 +45,7 @@ export function Designer(props) {
           branch={designer}
           questionId={questionId}
           setAnswerValue={setAnswerValue}
-          questionClick={() => {
-            props.updateTotalScore(props.totalScore + answerValue);
-            setQuestionId(questionId + 1);
-          }}
+          questionClick={defaultScoreUpdate}
         />
       );
 
@@ -53,12 +55,7 @@ export function Designer(props) {
           branch={designer}
           questionId={questionId}
           setAnswerValue={setAnswerValue}
-          questionClick={() => {
-            props.updateTotalScore(props.totalScore + answerValue);
-            props.totalScore > 50
-              ? setQuestionId(questionId + 1)
-              : props.setBranchId(4);
-          }}
+          questionClick={defaultScoreUpdate}
         />
       );
 
@@ -69,8 +66,7 @@ export function Designer(props) {
           questionId={questionId}
           setAnswerValue={setAnswerValue}
           questionClick={() => {
-            props.updateTotalScore(Math.round(props.totalScore * currentScore));
-            props.setBranchId(4);
+            props.updateTotalScore(Math.round(props.totalScore * answerValue));
           }}
         />
       );

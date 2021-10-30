@@ -1,5 +1,4 @@
 import React from "react";
-import { Col } from "react-bootstrap";
 import { initial } from "../const/questions";
 import { Question } from "./";
 
