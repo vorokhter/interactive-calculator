@@ -10,7 +10,6 @@ export function Developer(props) {
   const [currentScore, setCurrentScore] = React.useState(0);
 
   function onInput(value) {
-    console.log(Number(value));
     if (
       (!value || regexp.test(value)) &&
       Number(value) <= 10 &&

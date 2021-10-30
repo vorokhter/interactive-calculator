@@ -69,14 +69,10 @@ export function App() {
 
   return (
     <Container>
-      <Row className="flex-column gy-4">
-        {![-1, 2].includes(branchId) && (
-          <Col className="d-flex text-muted  justify-content-end">
-            {totalScore + "%"}
-          </Col>
-        )}
-        {render()}
-      </Row>
+      {![-1, 2].includes(branchId) && (
+        <Row className="text-muted justify-content-end">{totalScore + "%"}</Row>
+      )}
+      {render()}
     </Container>
   );
 }
