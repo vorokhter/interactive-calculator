@@ -17,7 +17,7 @@ export function Final(props) {
     <Row className="flex-column gy-4">
       <Col className="fs-1 fw-bold">{getText()}</Col>
       <Col className="fs-2 fw-bold text-muted">
-        {"Вы набрали " + score + "%"}
+        {"Вероятность приёма на работу равна " + score + "%."}
       </Col>
     </Row>
   );
