@@ -4,7 +4,7 @@
 - React
 - Bootstrap
 
- [пройти тест](https://tasker-frontend.herokuapp.com/)
+ [пройти тест](https://interctive-calculator.herokuapp.com/)
  
  [документация](https://docs.google.com/document/d/1DmcnQjrJfkbbmFD_URMRM6hh6rQO0OliGTWx2fF-vMs/edit)
 
