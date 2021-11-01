@@ -13,8 +13,8 @@ export function Tester(props) {
           className="p-0 text-decoration-none fs-5"
           variant="link"
           onClick={() => {
-            props.setBranchId(0);
             props.updateTotalScore(0);
+            props.setBranchId(0);
           }}
         >
           Возможно

@@ -27,8 +27,8 @@ export function Initial(props) {
           questionId={questionId}
           setAnswerValue={setAnswerValue}
           questionClick={() => {
-            props.setBranchId(vacancyId);
             props.updateTotalScore(props.totalScore + answerValue);
+            props.setBranchId(vacancyId);
           }}
         />
       );

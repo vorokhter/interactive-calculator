@@ -8,15 +8,21 @@ export function Designer(props) {
   const [skip, setSkip] = React.useState(0);
 
   const defaultScoreUpdate = () => {
-    if (answerValue)
-      return props.updateTotalScore(props.totalScore + answerValue);
-    return setSkip(skip + 1);
+    if (!answerValue || (answerValue < 0 && props.totalScore === 0)) {
+      setSkip(skip + 1);
+      return;
+    }
+
+    props.updateTotalScore(props.totalScore + answerValue);
   };
 
   React.useEffect(() => {
-    if ((questionId === 3 && props.totalScore <= 50) || questionId === 4)
-      return props.setBranchId(4);
-    return setQuestionId(questionId + 1);
+    if ((questionId === 3 && props.totalScore <= 50) || questionId === 4) {
+      props.setBranchId(4);
+      return;
+    }
+
+    setQuestionId(questionId + 1);
   }, [props.totalScore, skip]);
 
   switch (questionId) {
